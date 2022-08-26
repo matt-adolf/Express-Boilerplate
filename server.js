@@ -3,6 +3,7 @@ const router = express.Router();
 const apiRoute = require('./routes/api')
 
 const app = express();
+app.use(express.json()); // body parser
 const port = 3000;
 
 app.use('/api', apiRoute);
