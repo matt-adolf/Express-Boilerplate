@@ -1,0 +1,17 @@
+version: '1'
+services:
+  express-boilerplate:
+    container_name: express-boilerplate
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file: .env
+    #environment:
+      #- NODE_ENV=development
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports:
+      - "3000:3000"
