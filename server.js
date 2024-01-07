@@ -1,5 +1,6 @@
 const express = require('express');
 const apiRoute = require('./routes/api');
+const healthRoute = require('./routes/health.route');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const ErrorHandler = require('./middleware/ErrorHandler');
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
 
 app.use('/api', apiRoute);
+app.use('/health', healthRoute);
 
 app.use(ErrorHandler); // Error handler middleware
 
