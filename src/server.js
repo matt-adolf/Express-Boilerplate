@@ -1,9 +1,23 @@
+require('dotenv').config();
+
 const express = require('express');
+const mongoose = require('mongoose');
 const apiRoute = require('./routes/api');
 const healthRoute = require('./routes/health.route');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const ErrorHandler = require('./middleware/ErrorHandler');
+
+mongoose.connect(mongoString);
+const database = mongoose.connection;
+
+database.on('error', (error) => {
+    console.log(error)
+})
+
+database.once('connected', () => {
+    console.log('Database Connected');
+})
 
 const app = express();
 const PORT = process.env.PORT || 3000;
