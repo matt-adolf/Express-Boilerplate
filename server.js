@@ -5,7 +5,6 @@ const cors = require('cors');
 const ErrorHandler = require('./middleware/ErrorHandler');
 
 const app = express();
-app.use(express.json()); // body parser
 const PORT = process.env.PORT || 3000;
 /*app.use(cors({
     origin: true, //included origin as true
@@ -30,6 +29,9 @@ else {
         })
     );
 }
+
+app.use(express.json()); // support json encoded bodies
+app.use(express.urlencoded({ extended: true })); // support encoded bodies
 
 app.use('/api', apiRoute);
 
