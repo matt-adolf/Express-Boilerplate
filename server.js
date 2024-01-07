@@ -1,10 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const apiRoute = require('./routes/api')
+const apiRoute = require('./routes/api');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json()); // body parser
 const port = 3000;
+/*app.use(cors({
+    origin: true, //included origin as true
+    credentials: true,
+}));*/
+
+if (process.env.NODE_ENV === "development") {
+    console.log("Mode: Development")
+    app.use(
+        cors({
+            origin: `http://localhost:9000`,
+            credentials: true,
+        })
+    );
+}
+else {
+    console.log("Mode: Production")
+    app.use(
+        cors({
+            origin: "",
+            credentials: true,
+        })
+    );
+}
 
 app.use('/api', apiRoute);
 
