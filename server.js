@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiRoute = require('./routes/api');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const ErrorHandler = require('./middleware/ErrorHandler');
 
 const app = express();
@@ -32,6 +33,7 @@ else {
 
 app.use(express.json()); // support json encoded bodies
 app.use(express.urlencoded({ extended: true })); // support encoded bodies
+app.use(cookieParser());
 
 app.use('/api', apiRoute);
 
