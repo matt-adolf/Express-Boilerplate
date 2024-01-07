@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiRoute = require('./routes/api');
 const cors = require('cors');
+const ErrorHandler = require('./middleware/ErrorHandler');
 
 const app = express();
 app.use(express.json()); // body parser
@@ -31,6 +32,8 @@ else {
 }
 
 app.use('/api', apiRoute);
+
+app.use(ErrorHandler); // Error handler middleware
 
 // Invalid route handler
 app.get('*', function (req, res) {
