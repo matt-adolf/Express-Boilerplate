@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const apiRoute = require('./routes/api');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
