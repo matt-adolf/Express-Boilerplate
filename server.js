@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json()); // body parser
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 /*app.use(cors({
     origin: true, //included origin as true
     credentials: true,
@@ -37,6 +37,6 @@ app.get('*', function (req, res) {
     res.status(404).send('Invalid route detected.');
 })
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}...`)
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}...`)
 });
