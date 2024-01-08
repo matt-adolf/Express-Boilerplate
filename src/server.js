@@ -2,11 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const apiRoute = require('./routes/api');
+const apiRoute = require('./routes/api.route');
 const healthRoute = require('./routes/health.route');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const ErrorHandler = require('./middleware/ErrorHandler');
+const mongoString = process.env.DATABASE_URL || 'mongodb://localhost:27017';
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;

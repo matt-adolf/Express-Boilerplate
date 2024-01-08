@@ -1,5 +1,6 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const usersRoute = require('./users.route');
 
 router.route('/')
     .get((req, res) => {
@@ -18,6 +19,8 @@ router.route('/')
             res.status(200).send(body);
         }
     });
+
+router.use('/users', usersRoute);
 
 router.route('/:id')
     .get((req, res) => {
